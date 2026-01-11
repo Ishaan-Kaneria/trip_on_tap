@@ -113,14 +113,60 @@ footer {
     padding: 15px;
 }
 
+/* HEADER */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #222;
+}
+
+/* LOGO AREA */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo img {
+    height: 45px;
+}
+
+.site-title {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ff7b00;
+    text-decoration: underline;
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    nav {
-        display: flex;
+    .site-header {
         flex-direction: column;
+        gap: 15px;
     }
 
-    .card-grid {
+    .nav-links {
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 20px;
     }
 }
