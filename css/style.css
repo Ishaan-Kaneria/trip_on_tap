@@ -1,47 +1,88 @@
-/* GLOBAL */
-body {
+body
+{
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-header {
+header
+{
     display: flex;
+    padding: 15px 40px;
     justify-content: space-between;
-    padding: 15px 30px;
+    align-items: center;
     background: #222;
 }
 
-.logo {
-    color: #fff;
+.nav-logo
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo img
+{
+    height: 45px;
+}
+
+.site-title
+{
+    color: white;
     font-size: 22px;
     font-weight: bold;
 }
 
-nav a {
+.nav-links
+{
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a
+{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover
+{
+    color: #ff7b00;
+}
+
+nav a
+{
     color: #fff;
     margin-left: 20px;
     text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover
+{
     color: #ff7b00;
 }
 
-/* HERO */
-.hero {
+footer 
+{
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.index_section
+{
     background: url("../images/planyourvacation.png") center/cover no-repeat;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: white;
 }
 
-.hero-content {
-    text-align: center;
-}
-
-.btn {
+.btn
+{
     background: #ff7b00;
     color: white;
     padding: 12px 25px;
@@ -49,124 +90,76 @@ nav a:hover {
     border-radius: 20px;
 }
 
-/* CONTENT */
-.content {
+.content
+{
     padding: 50px 10%;
 }
 
-/* CARDS */
-.card-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+.content h2
+{
+    text-align: center;
 }
 
-.card {
+.card-grid
+{
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.card
+{
     width: 300px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     border-radius: 10px;
     overflow: hidden;
 }
 
-.card img {
-    width: 100%;
+.card img
+{
+    height: 150px;
+    width: 300px;
 }
 
-/* PACKAGES */
-.package {
+.card-grid .card:hover
+{
+    background-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.package
+{
     border: 1px solid #ddd;
     padding: 20px;
     margin-bottom: 20px;
 }
 
-.price {
+.price
+{
     font-weight: bold;
 }
 
-/* FORM */
-.form-container {
+.form-container
+{
     max-width: 400px;
     margin: auto;
 }
 
-.form-group {
+.form-group
+{
     margin-bottom: 15px;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input, .form-group textarea
+{
     width: 100%;
     padding: 10px;
 }
 
-select {
+select
+{
     width: 100%;
     padding: 10px;
-}
-
-
-/* FOOTER */
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-
-/* HEADER */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: #222;
-}
-
-/* LOGO AREA */
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.nav-logo img {
-    height: 45px;
-}
-
-.site-title {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-/* NAVIGATION LINKS */
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-links a:hover {
-    color: #ff7b00;
-    text-decoration: underline;
-}
-
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
 }
