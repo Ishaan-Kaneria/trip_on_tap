@@ -62,13 +62,6 @@ nav a:hover
     color: #ff7b00;
 }
 
-footer 
-{
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
 
 .index_section
 {
@@ -162,4 +155,17 @@ select
 {
     width: 100%;
     padding: 10px;
+}
+
+footer 
+{
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer p:hover
+{
+    cursor: pointer;
 }
