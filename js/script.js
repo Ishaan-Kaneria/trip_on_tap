@@ -34,24 +34,20 @@ const tours = [
     }
 ];
 
-function renderTours(data) {
-    const container = document.getElementById("tourContainer");
-
-    container.innerHTML = data.map(tour => `
-        <div class="card">
-            <img src="${tour.image}" alt="${tour.destination}">
-            <h3>${tour.destination}</h3>
-            <p>${tour.description}</p>
-
-            ${tour.plans.map(plan => `
-                <p class="price">${plan.type}: ₹${plan.price}</p>
-            `).join("")}
-
-            <button class="btn" onclick="bookTour('${tour.destination}')">
-                Book Now 🎃
-            </button>
-        </div>
-    `).join("");
+function createCard(tour) {
+  return `
+    <div class="card">
+        <img src="${tour.image}" alt="${tour.name}">
+        <h3>${tour.name}</h3>
+        <p>${tour.description}</p>
+        <p class="price">$${tour.price}</p>
+        <p>🌍 ${tour.country}</p>
+        <p>⭐ ${tour.rating}</p>
+        <button class="btn book-btn" data-name="${tour.name}">
+            View Plans
+        </button>
+    </div>
+  `;
 }
 
 function bookTour(city) {

@@ -25,37 +25,35 @@
 </header>
 
 <section class="content">
-    <h2>Book Your Trip</h2>
+    <h2>Available Plans</h2>
+    <div class="card-grid" id="planCards"></div>
+
+    <h2 style="margin-top:50px;">Book Your Trip</h2>
 
     <div class="form-container">
         <form id="bookingForm">
 
             <div class="form-group">
-                <label for="name">Name</label>
+                <label>Name</label>
                 <input type="text" id="name" required>
             </div>
 
             <div class="form-group">
-                <label for="age">Age</label>
+                <label>Age</label>
                 <input type="number" id="age" required min="1">
             </div>
 
             <div class="form-group">
-                <label for="destination">Destination</label>
+                <label>Destination</label>
                 <select id="destination" required>
                     <option value="">Select Destination</option>
-                    <!-- Dynamically filled from JS -->
                 </select>
             </div>
 
-            <!-- NEW: Plan Selection -->
             <div class="form-group">
-                <label for="plan">Plan Type</label>
+                <label>Plan Type</label>
                 <select id="plan" required>
                     <option value="">Select Plan</option>
-                    <option value="solo">Solo Plan</option>
-                    <option value="family">Family Plan</option>
-                    <option value="peak">Peak Season Plan</option>
                 </select>
             </div>
 
@@ -73,15 +71,12 @@
     <p>© 2026 Trip On Tap</p>
 </footer>
 
-<!-- Creepy Click Overlay -->
 <div id="creepy-overlay"></div>
 
-<!-- Creepy Sound -->
 <audio id="creepy-sound">
-    <source src="https://www.soundjay.com/horror/sounds/horror-ambience-01.mp3" type="audio/mpeg">
+    <source src="audio/button.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Modular JS -->
 <script type="module" src="js/main.js"></script>
 
 </body>
