@@ -19,7 +19,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="destinations.html">Destinations</a>
-        <a href="packages.html">Packages</a>
+        <a href="packages.html" class="active">Packages</a>
         <a href="contact.html">Contact</a>
     </nav>
 </header>
@@ -29,32 +29,40 @@
 
     <div class="form-container">
         <form id="bookingForm">
+
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" id="name">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
             </div>
 
             <div class="form-group">
-                <label>Age</label>
-                <input type="number" id="age">
+                <label for="age">Age</label>
+                <input type="number" id="age" required min="1">
             </div>
 
             <div class="form-group">
-                <label>Destination</label>
-                <select id="destination">
-                    <option value="">Select</option>
-                    <option>Paris</option>
-                    <option>Tokyo</option>
-                    <option>Dubai</option>
-                    <option>New York</option>
-                    <option>Singapore</option>
-                    <option>Amsterdam</option>
+                <label for="destination">Destination</label>
+                <select id="destination" required>
+                    <option value="">Select Destination</option>
+                    <!-- Dynamically filled from JS -->
+                </select>
+            </div>
+
+            <!-- NEW: Plan Selection -->
+            <div class="form-group">
+                <label for="plan">Plan Type</label>
+                <select id="plan" required>
+                    <option value="">Select Plan</option>
+                    <option value="solo">Solo Plan</option>
+                    <option value="family">Family Plan</option>
+                    <option value="peak">Peak Season Plan</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Book Now">
+                <input type="submit" value="Book Now" class="btn">
             </div>
+
         </form>
 
         <p id="status"></p>
@@ -65,6 +73,16 @@
     <p>© 2026 Trip On Tap</p>
 </footer>
 
-<script src="js/script.js"></script>
+<!-- Creepy Click Overlay -->
+<div id="creepy-overlay"></div>
+
+<!-- Creepy Sound -->
+<audio id="creepy-sound">
+    <source src="https://www.soundjay.com/horror/sounds/horror-ambience-01.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Modular JS -->
+<script type="module" src="js/main.js"></script>
+
 </body>
 </html>

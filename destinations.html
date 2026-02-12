@@ -18,58 +18,45 @@
     <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="destinations.html">Destinations</a>
+        <a href="destinations.html" class="active">Destinations</a>
         <a href="packages.html">Packages</a>
         <a href="contact.html">Contact</a>
     </nav>
 </header>
 
-
 <section class="content">
     <h2>Popular Destinations</h2>
 
-    <div class="card-grid">
-        <div class="card">
-            <img src="images/paris.jpg">
-            <h3>Paris</h3>
-            <p>Romantic city with rich art & culture.</p>
-        </div>
+    <!-- Search + Sort Controls -->
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search destination...">
 
-        <div class="card">
-            <img src="images/tokyo.jpg">
-            <h3>Tokyo</h3>
-            <p>Modern city blended with tradition.</p>
-        </div>
+        <select id="sortPrice">
+            <option value="">Sort by Price</option>
+            <option value="low">Low to High</option>
+        </select>
+    </div>
 
-        <div class="card">
-            <img src="images/dubai.jpg">
-            <h3>Dubai</h3>
-            <p>Luxury, skyscrapers & desert safaris.</p>
-        </div>
-
-        <div class="card">
-            <img src="images/newyork.jpg">
-            <h3>New York</h3>
-            <p>The city that never sleeps.</p>
-        </div>
-
-        <div class="card">
-            <img src="images/singapore.jpg">
-            <h3>Singapore</h3>
-            <p>Clean, green & futuristic city.</p>
-        </div>
-
-        <div class="card">
-            <img src="images/amsterdam.jpg">
-            <h3>Amsterdam</h3>
-            <p>Canals, art & historic streets.</p>
-        </div>
+    <!-- Dynamic Card Grid -->
+    <div class="card-grid" id="tourContainer">
+        <!-- Cards will be injected here by JS -->
     </div>
 </section>
 
 <footer>
     <p>© 2026 Trip On Tap</p>
 </footer>
+
+<!-- Creepy Click Overlay -->
+<div id="creepy-overlay"></div>
+
+<!-- Creepy Sound -->
+<audio id="creepy-sound">
+    <source src="https://www.soundjay.com/horror/sounds/horror-ambience-01.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Modular JS -->
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>
