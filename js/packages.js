@@ -29,6 +29,18 @@ export function loadPackages() {
       <option value="${tour.price}">${tour.name}</option>
     `;
   });
+  const savedDestination = localStorage.getItem("selectedDestination");
+
+if (savedDestination) {
+  destinationSelect.value = tours.find(t => t.name === savedDestination)?.price;
+  
+  // Optional: Scroll to form
+  document.querySelector(".form-container").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  localStorage.removeItem("selectedDestination");
+}
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();

@@ -10,23 +10,27 @@ export function loadDestinations() {
 
   let filteredTours = [...tours];
 
-  function renderTours(data) {
-    container.innerHTML = "";
+function renderTours(data) {
+  container.innerHTML = "";
 
-    data.forEach(tour => {
-      container.innerHTML += `
-        <div class="card">
-          <img src="${tour.image}" alt="${tour.name}">
-          <h3>${tour.name}</h3>
-          <p>${tour.description}</p>
-          <p class="price">$${tour.price}</p>
-          <p>🌍 ${tour.country}</p>
-          <p>⭐ ${tour.rating}</p>
-          <button class="btn">Explore</button>
-        </div>
-      `;
-    });
-  }
+  data.forEach(tour => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${tour.image}" alt="${tour.name}">
+        <h3>${tour.name}</h3>
+        <p>${tour.description}</p>
+        <p class="price">$${tour.price}</p>
+        <p>🌍 ${tour.country}</p>
+        <p>⭐ ${tour.rating}</p>
+        <button class="btn explore-btn" data-name="${tour.name}">
+          Explore
+        </button>
+      </div>
+    `;
+  });
+
+  addExploreListeners(); // VERY IMPORTANT
+}
 
   renderTours(filteredTours);
 
@@ -43,4 +47,18 @@ export function loadDestinations() {
     }
     renderTours(filteredTours);
   });
+
+  function addExploreListeners() {
+  document.querySelectorAll(".explore-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const destinationName = button.dataset.name;
+
+      // Store selected destination
+      localStorage.setItem("selectedDestination", destinationName);
+
+      // Redirect
+      window.location.href = "packages.html";
+    });
+  });
+}
 }
