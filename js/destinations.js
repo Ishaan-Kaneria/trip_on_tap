@@ -3,65 +3,81 @@ import { tours } from "./data.js";
 export function loadDestinations() {
 
   const container = document.getElementById("tourContainer");
+  const searchInput = document.getElementById("searchInput");
+  const sortPrice = document.getElementById("sortPrice");
+
   if (!container) return;
 
-  const searchInput = document.getElementById("searchInput");
-  const sortSelect = document.getElementById("sortPrice");
-
   let filteredTours = [...tours];
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-function renderTours(data) {
-  container.innerHTML = "";
+  function renderTours(list) {
 
-  data.forEach(tour => {
-    container.innerHTML += `
+    container.innerHTML = list.map(tour => `
       <div class="card">
         <img src="${tour.image}" alt="${tour.name}">
         <h3>${tour.name}</h3>
         <p>${tour.description}</p>
         <p class="price">$${tour.price}</p>
-        <p>🌍 ${tour.country}</p>
-        <p>⭐ ${tour.rating}</p>
-        <button class="btn explore-btn" data-id="${tour.id}" data-name="${tour.name}>
-          Explore
-        </button>
-      </div>
-    `;
-  });
 
-  addExploreListeners(); // VERY IMPORTANT
-}
+        <div class="card-actions">
+          <button class="btn explore-btn" data-id="${tour.id}">
+            Explore
+          </button>
+          <span class="heart ${wishlist.includes(tour.id) ? "active" : ""}" 
+                data-id="${tour.id}">
+            ❤️
+          </span>
+        </div>
+      </div>
+    `).join("");
+
+    attachEvents();
+  }
+
+  function attachEvents() {
+
+    // Explore
+    document.querySelectorAll(".explore-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        localStorage.setItem("selectedTourId", btn.dataset.id);
+        window.location.href = "./tourDetails.html";
+      });
+    });
+
+    // Wishlist (Event Delegation)
+    document.querySelectorAll(".heart").forEach(heart => {
+      heart.addEventListener("click", () => {
+        const id = parseInt(heart.dataset.id);
+
+        if (wishlist.includes(id)) {
+          wishlist = wishlist.filter(t => t !== id);
+        } else {
+          wishlist.push(id);
+        }
+
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        renderTours(filteredTours);
+      });
+    });
+  }
 
   renderTours(filteredTours);
 
-  searchInput.addEventListener("input", () => {
+  // Search
+  searchInput?.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
     filteredTours = tours.filter(t =>
-      t.name.toLowerCase().includes(searchInput.value.toLowerCase())
+      t.name.toLowerCase().includes(value)
     );
     renderTours(filteredTours);
   });
 
-  sortSelect.addEventListener("change", () => {
-    if (sortSelect.value === "low") {
+  // Sort
+  sortPrice?.addEventListener("change", () => {
+    if (sortPrice.value === "low") {
       filteredTours.sort((a, b) => a.price - b.price);
     }
     renderTours(filteredTours);
   });
-
-  function addExploreListeners() {
-  document.querySelectorAll(".explore-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      const destinationName = button.dataset.name;
-      const id = btn.dataset.id;
-      localStorage.setItem("selectedTourId", id);
-      window.location.href = "tour-details.html";
-
-      // Store selected destination
-      localStorage.setItem("selectedDestination", destinationName);
-
-      // Redirect
-      window.location.href = "packages.html";
-    });
-  });
-}
 }

@@ -34,7 +34,25 @@ export const tours = [
     description: "The city that never sleeps.",
     country: "USA",
     rating: 4.5
-  }
+  },
+  {
+    id: 5,
+    name: "Bali Escape",
+    country: "Indonesia",
+    price: 800,
+    image: "images/bali.jpg",
+    description: "Experience tropical paradise with beaches and temples.",
+    rating: 4.7
+  },
+  {
+    id: 6,
+    name: "Swiss Alps Adventure",
+    country: "Switzerland",
+    price: 1500,
+    image: "images/swiss.jpg",
+    description: "Snow peaks, scenic trains, and mountain magic.",
+    rating: 4.9
+  },
 ];
 
 export const plans = [
@@ -52,5 +70,20 @@ export const plans = [
     type: "Peak Season Plan",
     multiplier: 1.6,
     description: "Travel during peak season."
+  },
+  {
+    type: "Standard",
+    description: "Hotel + Breakfast",
+    multiplier: 1
+  },
+  {
+    type: "Premium",
+    description: "Hotel + Breakfast + Tours",
+    multiplier: 1.5
+  },
+  {
+    type: "Luxury",
+    description: "All Inclusive + VIP Services",
+    multiplier: 2
   }
 ];

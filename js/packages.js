@@ -8,70 +8,91 @@ export function loadPackages() {
   const form = document.getElementById("bookingForm");
   const status = document.getElementById("status");
 
-  if (!planContainer || !destinationSelect || !planSelect || !form) return;
+  if (!form) return;
 
-  // Clear existing content (important if page reloads)
-  planContainer.innerHTML = "";
-  planSelect.innerHTML = `<option value="">Select Plan</option>`;
-  destinationSelect.innerHTML = `<option value="">Select Destination</option>`;
+  let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
   // Load Plans
-  plans.forEach(plan => {
-    planContainer.innerHTML += `
-      <div class="card">
-        <h3>${plan.type}</h3>
-        <p>${plan.description}</p>
-        <p class="price">${plan.multiplier}x Price</p>
-      </div>
-    `;
+  planContainer.innerHTML = plans.map(plan => `
+    <div class="card">
+      <h3>${plan.type}</h3>
+      <p>${plan.description}</p>
+      <p class="price">${plan.multiplier}x Price</p>
+    </div>
+  `).join("");
 
-    planSelect.innerHTML += `
-      <option value="${plan.multiplier}">
-        ${plan.type}
+  planSelect.innerHTML = `
+    <option value="">Select Plan</option>
+    ${plans.map(p => `
+      <option value="${p.multiplier}">
+        ${p.type}
       </option>
-    `;
-  });
+    `).join("")}
+  `;
 
-  // Load Destinations
-  tours.forEach(tour => {
-    destinationSelect.innerHTML += `
-      <option value="${tour.id}">
-        ${tour.name}
+  destinationSelect.innerHTML = `
+    <option value="">Select Destination</option>
+    ${tours.map(t => `
+      <option value="${t.id}">
+        ${t.name}
       </option>
-    `;
-  });
+    `).join("")}
+  `;
 
-  // If user clicked "Book Now" from Tour Details
-  const savedDestination = localStorage.getItem("selectedDestination");
-
-  if (savedDestination) {
-    destinationSelect.value = savedDestination;
-
-    document.querySelector(".form-container")?.scrollIntoView({
-      behavior: "smooth"
-    });
-
-    localStorage.removeItem("selectedDestination");
-  }
-
-  // Form Submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const date = document.getElementById("travelDate").value;
+    const travelers = parseInt(document.getElementById("travelers").value);
     const tourId = parseInt(destinationSelect.value);
     const multiplier = parseFloat(planSelect.value);
 
-    if (!tourId || !multiplier) {
-      status.innerHTML = "⚠ Please select destination and plan.";
+    // Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !date || !travelers || !tourId || !multiplier) {
+      status.innerHTML = "⚠ All fields are required.";
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      status.innerHTML = "⚠ Invalid email format.";
+      return;
+    }
+
+    const selectedDate = new Date(date);
+    const today = new Date();
+
+    if (selectedDate <= today) {
+      status.innerHTML = "⚠ Travel date must be in the future.";
       return;
     }
 
     const selectedTour = tours.find(t => t.id === tourId);
-    const total = selectedTour.price * multiplier;
+    const totalPrice = selectedTour.price * multiplier * travelers;
+
+    const newBooking = {
+      id: Date.now(),
+      name,
+      email,
+      date,
+      travelers,
+      tour: selectedTour.name,
+      totalPrice
+    };
+
+    bookings.push(newBooking);
+
+    localStorage.setItem("bookings", JSON.stringify(bookings));
 
     status.innerHTML = `
-      🎉 Booking Confirmed for <strong>${selectedTour.name}</strong>!
-      <br>Total Price: <strong>$${total}</strong>
+      🎉 Booking Confirmed! <br>
+      Destination: ${selectedTour.name} <br>
+      Total: $${totalPrice}
     `;
+
+    form.reset();
   });
 }
