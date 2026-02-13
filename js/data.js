@@ -1,5 +1,6 @@
 export const tours = [
   {
+    id: 1,
     name: "Paris",
     price: 1200,
     image: "images/paris.jpg",
@@ -8,6 +9,7 @@ export const tours = [
     rating: 4.8
   },
   {
+    id: 2,
     name: "Tokyo",
     price: 1500,
     image: "images/tokyo.jpg",
@@ -16,6 +18,7 @@ export const tours = [
     rating: 4.7
   },
   {
+    id: 3,
     name: "Dubai",
     price: 1800,
     image: "images/dubai.jpg",
@@ -24,6 +27,7 @@ export const tours = [
     rating: 4.6
   },
   {
+    id: 4,
     name: "New York",
     price: 1400,
     image: "images/newyork.jpg",

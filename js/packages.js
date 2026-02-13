@@ -8,8 +8,14 @@ export function loadPackages() {
   const form = document.getElementById("bookingForm");
   const status = document.getElementById("status");
 
-  if (!planContainer) return;
+  if (!planContainer || !destinationSelect || !planSelect || !form) return;
 
+  // Clear existing content (important if page reloads)
+  planContainer.innerHTML = "";
+  planSelect.innerHTML = `<option value="">Select Plan</option>`;
+  destinationSelect.innerHTML = `<option value="">Select Destination</option>`;
+
+  // Load Plans
   plans.forEach(plan => {
     planContainer.innerHTML += `
       <div class="card">
@@ -20,35 +26,52 @@ export function loadPackages() {
     `;
 
     planSelect.innerHTML += `
-      <option value="${plan.multiplier}">${plan.type}</option>
+      <option value="${plan.multiplier}">
+        ${plan.type}
+      </option>
     `;
   });
 
+  // Load Destinations
   tours.forEach(tour => {
     destinationSelect.innerHTML += `
-      <option value="${tour.price}">${tour.name}</option>
+      <option value="${tour.id}">
+        ${tour.name}
+      </option>
     `;
   });
+
+  // If user clicked "Book Now" from Tour Details
   const savedDestination = localStorage.getItem("selectedDestination");
 
-if (savedDestination) {
-  destinationSelect.value = tours.find(t => t.name === savedDestination)?.price;
-  
-  // Optional: Scroll to form
-  document.querySelector(".form-container").scrollIntoView({
-    behavior: "smooth"
-  });
+  if (savedDestination) {
+    destinationSelect.value = savedDestination;
 
-  localStorage.removeItem("selectedDestination");
-}
+    document.querySelector(".form-container")?.scrollIntoView({
+      behavior: "smooth"
+    });
 
+    localStorage.removeItem("selectedDestination");
+  }
+
+  // Form Submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const basePrice = parseFloat(destinationSelect.value);
+    const tourId = parseInt(destinationSelect.value);
     const multiplier = parseFloat(planSelect.value);
-    const total = basePrice * multiplier;
 
-    status.innerHTML = `🎉 Booking Confirmed! Total Price: $${total}`;
+    if (!tourId || !multiplier) {
+      status.innerHTML = "⚠ Please select destination and plan.";
+      return;
+    }
+
+    const selectedTour = tours.find(t => t.id === tourId);
+    const total = selectedTour.price * multiplier;
+
+    status.innerHTML = `
+      🎉 Booking Confirmed for <strong>${selectedTour.name}</strong>!
+      <br>Total Price: <strong>$${total}</strong>
+    `;
   });
 }

@@ -22,7 +22,7 @@ function renderTours(data) {
         <p class="price">$${tour.price}</p>
         <p>🌍 ${tour.country}</p>
         <p>⭐ ${tour.rating}</p>
-        <button class="btn explore-btn" data-name="${tour.name}">
+        <button class="btn explore-btn" data-id="${tour.id}" data-name="${tour.name}>
           Explore
         </button>
       </div>
@@ -52,6 +52,9 @@ function renderTours(data) {
   document.querySelectorAll(".explore-btn").forEach(button => {
     button.addEventListener("click", () => {
       const destinationName = button.dataset.name;
+      const id = btn.dataset.id;
+      localStorage.setItem("selectedTourId", id);
+      window.location.href = "tour-details.html";
 
       // Store selected destination
       localStorage.setItem("selectedDestination", destinationName);

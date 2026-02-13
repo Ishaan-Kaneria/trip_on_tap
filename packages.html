@@ -24,53 +24,56 @@
     </nav>
 </header>
 
-<section class="content">
-    <h2>Available Plans</h2>
+<main class="content">
+
+    <h2 class="section-title">Available Plans</h2>
     <div class="card-grid" id="planCards"></div>
 
-    <h2 style="margin-top:50px;">Book Your Trip</h2>
+    <h2 class="section-title">Book Your Trip</h2>
 
     <div class="form-container">
         <form id="bookingForm">
 
             <div class="form-group">
-                <label>Name</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" required>
             </div>
 
             <div class="form-group">
-                <label>Age</label>
+                <label for="age">Age</label>
                 <input type="number" id="age" required min="1">
             </div>
 
             <div class="form-group">
-                <label>Destination</label>
+                <label for="destination">Destination</label>
                 <select id="destination" required>
                     <option value="">Select Destination</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Plan Type</label>
+                <label for="plan">Plan Type</label>
                 <select id="plan" required>
                     <option value="">Select Plan</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Book Now" class="btn">
+                <button type="submit" class="btn">Book Now</button>
             </div>
 
         </form>
 
-        <p id="status"></p>
+        <p id="status" class="booking-status"></p>
     </div>
-</section>
+
+</main>
 
 <footer>
     <p>© 2026 Trip On Tap</p>
 </footer>
 
+<!-- Halloween Overlay -->
 <div id="creepy-overlay"></div>
 
 <audio id="creepy-sound">
