@@ -18,7 +18,7 @@ export const tours = [
         description: `Discover a mesmerizing blend of neon-lit futurism and ancient tradition in Tokyo, 
                         where serene temples stand in the shadow of soaring skyscrapers. Experience the 
                         pinnacle of Japanese hospitality at Aman Tokyo, a peaceful sanctuary above the 
-                        city skyline that offers breathtaking views and world-class refined luxury.`, 
+                        city skyline that offers breathtaking views.`, 
         country: "Japan"
     },
     { 

@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.updateWishlistCount();
 
     // STRICT ROUTING SYSTEM
-    switch (page) {
+    switch (page)
+    {
         case "index.html":
         case "":
             renderHomeTours();
@@ -74,11 +75,10 @@ function initBookingForm()
     const calculateTotal = () => {
         const tour = tours.find(t => t.id == destSelect.value);
         const mult = parseFloat(planSelect.value);
-        if (tour && mult) {
+        if (tour && mult)
             totalDisplay.innerHTML = `Total Price: $${(tour.price * mult).toLocaleString()}`;
-        } else {
+        else
             totalDisplay.innerHTML = "";
-        }
     };
 
     destSelect.onchange = calculateTotal;
@@ -107,21 +107,24 @@ function renderDetailsPage()
             <img src="${tour.image}" alt="${tour.name}">
             <div class="details-info">
                 <h1>${tour.name}</h1>
-                <p>${tour.description}</p>
+                <p style="text-align: justify;">${tour.description}</p>
                 <h2 class="price">Base Price: $${tour.price}</h2>
+                <br>
                 <a href="packages.html" class="btn">Proceed to Booking</a>
             </div>
         </div>
     `;
 }
 
-function renderWishlistPage() {
+function renderWishlistPage()
+{
     const container = document.getElementById("wishlistContainer");
     const wishlistIds = JSON.parse(localStorage.getItem("wishlist")) || [];
     const favorites = tours.filter(t => wishlistIds.includes(t.id));
 
     if (!container) return;
-    if (favorites.length === 0) {
+    if (favorites.length === 0)
+    {
         container.innerHTML = `<p class="no-results">Your wishlist is currently empty.</p>`;
         return;
     }
