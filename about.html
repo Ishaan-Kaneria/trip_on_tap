@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trip On Tap | About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip On Tap | About Us</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,18 +19,29 @@
             <a href="destinations.html">Destinations</a>
             <a href="packages.html">Packages</a>
             <a href="contact.html">Contact</a>
-            <a href="wishlist.html">❤️ (<span id="wishlistCount">0</span>)</a>
+            <a href="wishlist.html" class="wishlist-link">❤️ <span id="wishlistCount"></span></a>
         </nav>
     </header>
 
-    <main class="content" style="padding: 50px; text-align: center;">
-        <h2>About Us</h2>
-        <p style="max-width: 800px; margin: 20px auto;">Trip On Tap is dedicated to providing the most adventurous and spooky travel experiences. From the misty mountains to ancient ruins, we bring your travel dreams to life.</p>
+    <main class="content">
+        <section class="about-hero">
+            <h2>Our Story</h2>
+            <p>Making global travel as seamless as turning on a tap.</p>
+        </section>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>To provide curated, high-quality travel experiences that are affordable and accessible to everyone.</p>
+            </div>
+            <div class="about-card">
+                <h3>Why Us?</h3>
+                <p>We combine local expertise with modern technology to ensure your trip is stress-free from start to finish.</p>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
-    </footer>
+    <footer><p>© 2026 Trip On Tap</p></footer>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

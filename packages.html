@@ -19,21 +19,21 @@
             <a href="destinations.html">Destinations</a>
             <a href="packages.html" class="active">Packages</a>
             <a href="contact.html">Contact</a>
-            <a href="wishlist.html">❤️ Wishlist <span id="wishlistCount"></span></a>
+            <a href="wishlist.html" class="wishlist-link">❤️ <span id="wishlistCount"></span></a>
         </nav>
     </header>
 
     <main class="content">
-        <div class="form-container" style="margin-top: 50px;">
-            <h2>Book Your Trip</h2>
+        <div class="form-container">
+            <h2>Book Your Travel Package</h2>
             <form id="bookingForm">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
+                    <input type="text" id="name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
                     <label>Travel Date</label>
@@ -42,28 +42,25 @@
                 <div class="form-group">
                     <label>Select Destination</label>
                     <select id="destinationSelect" required>
-                        <option value="">-- Choose --</option>
+                        <option value="">-- Choose Destination --</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Plan Type</label>
                     <select id="planSelect" required>
-                        <option value="">-- Choose --</option>
+                        <option value="">-- Select Plan --</option>
                     </select>
                 </div>
 
-                <div id="totalPriceDisplay" style="font-size: 1.5rem; color: #ff7b00; font-weight: bold; text-align: center; margin: 15px 0;"></div>
+                <div id="totalPriceDisplay" class="total-box"></div>
 
-                <button type="submit" class="btn" style="width:100%;">Confirm Booking</button>
+                <button type="submit" class="btn" style="width:100%;">Complete Booking</button>
             </form>
-            <p id="status" style="text-align:center; margin-top:15px;"></p>
+            <p id="status"></p>
         </div>
     </main>
 
-    <footer>
-        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
-    </footer>
-
+    <footer><p>© 2026 Trip On Tap</p></footer>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

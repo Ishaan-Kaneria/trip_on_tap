@@ -1,12 +1,12 @@
 export const tours = [
-    { id: 1, name: "Paris", price: 1200, image: "images/paris.jpg", description: "City of lights and romance.", country: "France" },
-    { id: 2, name: "Tokyo", price: 1500, image: "images/tokyo.jpg", description: "A blend of old and new.", country: "Japan" },
-    { id: 3, name: "Dubai", price: 1800, image: "images/dubai.jpg", description: "Desert luxury at its best.", country: "UAE" },
-    { id: 4, name: "Bali", price: 800, image: "images/bali.jpg", description: "Tropical peace and beaches.", country: "Indonesia" },
-    { id: 5, name: "Swiss Alps", price: 2200, image: "images/alps.jpg", description: "Majestic snowy mountains.", country: "Switzerland" }
+    { id: 1, name: "Paris", price: 1200, image: "images/paris.jpg", description: "City of love and lights.", country: "France" },
+    { id: 2, name: "Tokyo", price: 1500, image: "images/tokyo.jpg", description: "Tradition meets technology.", country: "Japan" },
+    { id: 3, name: "Dubai", price: 1800, image: "images/dubai.jpg", description: "Luxury in the desert.", country: "UAE" },
+    { id: 4, name: "New York", price: 1400, image: "images/newyork.jpg", description: "The city that never sleeps.", country: "USA" },
+    { id: 5, name: "Bali Escape", price: 800, image: "images/bali.jpg", description: "Tropical paradise with beaches.", country: "Indonesia" },
+    { id: 6, name: "Swiss Alps", price: 2200, image: "images/alps.jpg", description: "Breathtaking snowy peaks.", country: "Switzerland" }
 ];
 
-// Plan types with their respective price multipliers
 export const planTypes = [
     { name: "Solo Explorer", multiplier: 1.0 },
     { name: "Family Fun", multiplier: 2.5 },

@@ -19,30 +19,28 @@
             <a href="destinations.html" class="active">Destinations</a>
             <a href="packages.html">Packages</a>
             <a href="contact.html">Contact</a>
-            <a href="wishlist.html">❤️ Wishlist <span id="wishlistCount"></span></a>
+            <a href="wishlist.html" class="wishlist-link">❤️ <span id="wishlistCount"></span></a>
         </nav>
     </header>
 
     <main class="content">
-        <h2 class="section-title" style="text-align:center; padding: 30px 0;">Popular Destinations</h2>
-        
-        <div class="controls" style="text-align:center; margin-bottom: 20px;">
-            <input type="text" id="searchInput" placeholder="Search destination...">
-            <select id="sortPrice">
-                <option value="">Sort by Price</option>
-                <option value="low">Low to High</option>
-                <option value="high">High to Low</option>
-            </select>
+        <div class="search-container">
+            <div class="search-bar-sexy">
+                <input type="text" id="searchInput" placeholder="Search your dream destination...">
+                <div class="search-divider"></div>
+                <select id="sortPrice">
+                    <option value="">Sort by Price</option>
+                    <option value="low">💰 Budget Friendly</option>
+                    <option value="high">💎 Luxury First</option>
+                </select>
+            </div>
         </div>
 
         <div class="card-grid" id="tourContainer">
             </div>
     </main>
 
-    <footer>
-        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
-    </footer>
-
+    <footer><p>© 2026 Trip On Tap</p></footer>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
