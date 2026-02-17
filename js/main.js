@@ -31,28 +31,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-window.updateWishlistCount = function() {
+window.updateWishlistCount = function()
+{
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const countEl = document.getElementById("wishlistCount");
     if (countEl) countEl.innerText = `(${wishlist.length})`;
 }
 
-function renderHomeTours() {
+function renderHomeTours()
+{
     const container = document.getElementById("homeTourContainer");
     if (!container) return;
-    container.innerHTML = tours.slice(0, 3).map(tour => `
+    container.innerHTML = tours.slice(0, 4).map(tour => `
         <div class="card">
-            <img src="${tour.image}" alt="${tour.name}">
-            <div class="card-body">
-                <h3>${tour.name}</h3>
-                <p class="price">$${tour.price}</p>
-                <a href="destinations.html" class="btn">Explore More</a>
-            </div>
+            <a href="destinations.html" style="color: white; text-decoration: none;">
+                <img src="${tour.image}" alt="${tour.name}">
+                <div class="card-body">
+                    <h3>${tour.name}</h3>
+                    <p class="price">$${tour.price}</p>
+                    <a href="destinations.html" class="btn">Explore More</a>
+                </div>
+            </a>
         </div>
     `).join('');
 }
 
-function initBookingForm() {
+function initBookingForm()
+{
     const form = document.getElementById("bookingForm");
     const destSelect = document.getElementById("destinationSelect");
     const planSelect = document.getElementById("planSelect");
@@ -89,7 +94,8 @@ function initBookingForm() {
     };
 }
 
-function renderDetailsPage() {
+function renderDetailsPage()
+{
     const container = document.getElementById("tourDetails");
     const id = localStorage.getItem("selectedTourId");
     const tour = tours.find(t => t.id == id);
@@ -125,6 +131,7 @@ function renderWishlistPage() {
             <img src="${tour.image}" alt="${tour.name}">
             <div class="card-body">
                 <h3>${tour.name}</h3>
+                <br>
                 <button class="btn" onclick="removeFromWishlist(${tour.id})">Remove</button>
             </div>
         </div>
