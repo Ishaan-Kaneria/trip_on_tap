@@ -11,7 +11,7 @@ export function loadDestinations() {
 
     function render(list) {
         if (list.length === 0) {
-            container.innerHTML = `<div class="no-results">Sorry, no destinations match your criteria.</div>`;
+            container.innerHTML = `<div class="no-results">Sorry, no destinations match your search.</div>`;
             return;
         }
 
@@ -27,11 +27,17 @@ export function loadDestinations() {
             </div>
         `).join('');
 
-        attachCardEvents();
+        attachEvents();
     }
 
-    function attachCardEvents() {
-        // Toggle Heart
+    function attachEvents() {
+        document.querySelectorAll(".detail-btn").forEach(b => {
+            b.onclick = () => {
+                localStorage.setItem("selectedTourId", b.dataset.id);
+                window.location.href = "tourDetails.html";
+            };
+        });
+
         document.querySelectorAll(".heart").forEach(h => {
             h.onclick = () => {
                 const id = parseInt(h.dataset.id);
@@ -45,29 +51,17 @@ export function loadDestinations() {
                 window.updateWishlistCount();
             };
         });
-
-        // Details Redirection
-        document.querySelectorAll(".detail-btn").forEach(b => {
-            b.onclick = () => {
-                localStorage.setItem("selectedTourId", b.dataset.id);
-                location.href = "tourDetails.html";
-            };
-        });
     }
 
-    // Event Listeners for Sexy Search Bar
-    searchInput.addEventListener("input", () => {
+    searchInput.oninput = () => {
         const filtered = tours.filter(t => t.name.toLowerCase().includes(searchInput.value.toLowerCase()));
         render(filtered);
-    });
+    };
 
-    sortPrice.addEventListener("change", () => {
-        const sorted = [...tours].sort((a,b) => {
-            return sortPrice.value === 'low' ? a.price - b.price : b.price - a.price;
-        });
+    sortPrice.onchange = () => {
+        const sorted = [...tours].sort((a,b) => sortPrice.value === 'low' ? a.price - b.price : b.price - a.price);
         render(sorted);
-    });
+    };
 
-    // Initial render
     render(tours);
 }

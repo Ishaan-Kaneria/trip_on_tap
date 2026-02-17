@@ -2,32 +2,41 @@ import { tours, planTypes } from './data.js';
 import { loadDestinations } from './destinations.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const path = window.location.pathname;
+    // Get only the filename (e.g., "tourDetails.html")
+    const page = window.location.pathname.split("/").pop();
     
-    // Always update counter on every page load
     window.updateWishlistCount();
 
-    if (path.includes("index.html") || path === "/" || path.endsWith("/")) {
-        renderHomeTours();
-    } else if (path.includes("destinations.html")) {
-        loadDestinations();
-    } else if (path.includes("packages.html")) {
-        initBookingForm();
-    } else if (path.includes("wishlist.html")) {
-        renderWishlistPage();
-    } else if (path.includes("tourDetails.html")) {
-        renderDetailsPage();
+    // STRICT ROUTING SYSTEM
+    switch (page) {
+        case "index.html":
+        case "":
+            renderHomeTours();
+            break;
+        case "destinations.html":
+            loadDestinations();
+            break;
+        case "tourDetails.html":
+            renderDetailsPage();
+            break;
+        case "packages.html":
+            initBookingForm();
+            break;
+        case "wishlist.html":
+            renderWishlistPage();
+            break;
+        case "contact.html":
+            // No specific JS needed for contact yet, but it's here to prevent overlaps
+            break;
     }
 });
 
-// Updates the navigation counter instantly
 window.updateWishlistCount = function() {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const countEl = document.getElementById("wishlistCount");
     if (countEl) countEl.innerText = `(${wishlist.length})`;
 }
 
-// 🏠 Index Page: Render Featured 3
 function renderHomeTours() {
     const container = document.getElementById("homeTourContainer");
     if (!container) return;
@@ -43,7 +52,6 @@ function renderHomeTours() {
     `).join('');
 }
 
-// 📋 Packages Page: Form Logic & Multiplier
 function initBookingForm() {
     const form = document.getElementById("bookingForm");
     const destSelect = document.getElementById("destinationSelect");
@@ -52,11 +60,9 @@ function initBookingForm() {
     
     if (!form) return;
 
-    // Populate selects
     destSelect.innerHTML += tours.map(t => `<option value="${t.id}">${t.name} ($${t.price})</option>`).join('');
     planSelect.innerHTML += planTypes.map(p => `<option value="${p.multiplier}">${p.name}</option>`).join('');
 
-    // Auto-select if coming from "Details"
     const autoId = localStorage.getItem("selectedTourId");
     if (autoId) destSelect.value = autoId;
 
@@ -64,29 +70,30 @@ function initBookingForm() {
         const tour = tours.find(t => t.id == destSelect.value);
         const mult = parseFloat(planSelect.value);
         if (tour && mult) {
-            totalDisplay.innerHTML = `Estimated Total: $${(tour.price * mult).toLocaleString()}`;
+            totalDisplay.innerHTML = `Total Price: $${(tour.price * mult).toLocaleString()}`;
         } else {
             totalDisplay.innerHTML = "";
         }
     };
 
-    destSelect.addEventListener("change", calculateTotal);
-    planSelect.addEventListener("change", calculateTotal);
+    destSelect.onchange = calculateTotal;
+    planSelect.onchange = calculateTotal;
     if(autoId) calculateTotal();
 
-    form.addEventListener("submit", (e) => {
+    form.onsubmit = (e) => {
         e.preventDefault();
-        document.getElementById("status").innerHTML = "✅ Booking Confirmed! We will email you shortly.";
+        document.getElementById("status").innerHTML = "✅ Booking Confirmed!";
+        localStorage.removeItem("selectedTourId");
         form.reset();
         totalDisplay.innerHTML = "";
-    });
+    };
 }
 
-// 🔍 Details Page: Dynamic Injection
 function renderDetailsPage() {
     const container = document.getElementById("tourDetails");
     const id = localStorage.getItem("selectedTourId");
     const tour = tours.find(t => t.id == id);
+    
     if (!tour || !container) return;
 
     container.innerHTML = `
@@ -102,7 +109,6 @@ function renderDetailsPage() {
     `;
 }
 
-// ❤️ Wishlist Page: Rendering & Removal
 function renderWishlistPage() {
     const container = document.getElementById("wishlistContainer");
     const wishlistIds = JSON.parse(localStorage.getItem("wishlist")) || [];

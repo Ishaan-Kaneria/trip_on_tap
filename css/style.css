@@ -21,7 +21,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     border-bottom: 2px solid #ff7b00;
     position: sticky;
     top: 0;
@@ -61,7 +61,7 @@ header {
     font-weight: 500;
     font-size: 0.95rem;
     position: relative;
-    white-space: nowrap; /* Keeps links from wrapping */
+    white-space: nowrap;
 }
 
 .nav-links a:hover, 
@@ -69,7 +69,7 @@ header {
     color: #ff7b00;
 }
 
-/* ================= INDEX HERO (Original Style Restored) ================= */
+/* ================= INDEX HERO SECTION ================= */
 .index_section {
     height: 85vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg') center/cover no-repeat;
@@ -94,7 +94,7 @@ header {
     color: #ddd;
 }
 
-/* ================= SEXY SEARCH BAR (Destinations) ================= */
+/* ================= SEXY SEARCH BAR ================= */
 .search-container {
     padding: 50px 20px;
     display: flex;
@@ -145,7 +145,6 @@ header {
     font-weight: 600;
     cursor: pointer;
     outline: none;
-    padding-right: 10px;
 }
 
 /* ================= CARD GRID ================= */
@@ -219,7 +218,38 @@ header {
     color: #ff3e3e;
 }
 
-/* ================= FORMS ================= */
+/* ================= TOUR DETAILS PAGE ================= */
+.details-wrapper {
+    display: flex;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 30px;
+    align-items: center;
+}
+
+.details-wrapper img {
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.details-info h1 {
+    font-size: 3rem;
+    color: #ff7b00;
+    margin-bottom: 15px;
+}
+
+.details-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+/* ================= FORMS (Contact & Booking) ================= */
 .form-container {
     max-width: 500px;
     margin: 50px auto;
@@ -238,15 +268,22 @@ header {
     display: block;
     margin-bottom: 8px;
     color: #ff7b00;
+    font-size: 0.9rem;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 12px;
-    background: #000;
+    background: rgba(0,0,0,0.5);
     border: 1px solid #333;
     border-radius: 10px;
     color: white;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #ff7b00;
+    outline: none;
 }
 
 .total-box {
@@ -255,9 +292,10 @@ input, select, textarea {
     font-weight: bold;
     color: #ff7b00;
     margin: 20px 0;
-    padding: 10px;
+    padding: 15px;
     border: 1px dashed #ff7b00;
     border-radius: 10px;
+    background: rgba(255, 123, 0, 0.1);
 }
 
 .btn {
@@ -271,11 +309,33 @@ input, select, textarea {
     text-decoration: none;
     display: inline-block;
     transition: 0.3s;
+    text-align: center;
 }
 
 .btn:hover {
     background: white;
     transform: scale(1.05);
+}
+
+/* ================= ABOUT PAGE ================= */
+.about-hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* ================= MESSAGES ================= */
@@ -289,25 +349,6 @@ input, select, textarea {
     border-radius: 20px;
 }
 
-/* ================= ABOUT PAGE ================= */
-.about-hero {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.about-card {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 30px;
-    border-radius: 20px;
-}
-
 /* ================= FOOTER ================= */
 footer {
     padding: 30px;
@@ -317,33 +358,32 @@ footer {
     margin-top: auto;
 }
 
-/* ================= RESPONSIVE (INLINE HEADER) ================= */
+/* ================= RESPONSIVE DESIGN ================= */
 @media (max-width: 768px) {
     header {
         padding: 15px 15px;
-        flex-direction: row; /* Force inline layout */
+        flex-direction: row; /* Ensures inline navigation */
+        justify-content: space-between;
     }
 
-    .site-title {
-        font-size: 16px;
-    }
-
-    .nav-logo img {
-        height: 30px;
-    }
+    .site-title { font-size: 16px; }
+    .nav-logo img { height: 30px; }
 
     .nav-links a {
-        margin-left: 10px;
-        font-size: 0.75rem;
+        margin-left: 8px;
+        font-size: 0.7rem;
     }
 
-    .hero-overlay h1 {
-        font-size: 2.5rem;
+    .hero-overlay h1 { font-size: 2.5rem; }
+
+    .details-wrapper {
+        flex-direction: column;
+        padding: 20px;
     }
-    
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
+
+    .details-wrapper img { width: 100%; }
+
+    .about-grid { grid-template-columns: 1fr; }
 
     .search-bar-sexy {
         flex-direction: column;
@@ -351,12 +391,5 @@ footer {
         padding: 15px;
     }
 
-    .search-divider {
-        display: none;
-    }
-
-    .search-bar-sexy input, .search-bar-sexy select {
-        width: 100%;
-        text-align: center;
-    }
+    .search-divider { display: none; }
 }
