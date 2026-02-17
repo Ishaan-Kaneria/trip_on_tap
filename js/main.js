@@ -1,9 +1,10 @@
 import { loadDestinations } from "./destinations.js";
 import { loadPackages } from "./packages.js";
 import { loadTourDetails } from "./tourDetails.js";
+import { loadHomeTours } from "./home.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-
+  loadHomeTours();
   loadDestinations();
   loadPackages();
   loadTourDetails();

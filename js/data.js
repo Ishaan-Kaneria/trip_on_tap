@@ -57,33 +57,21 @@ export const tours = [
 
 export const plans = [
   {
-    type: "Solo Plan",
+    type: "Solo",
+    description: "Perfect for solo explorers",
     multiplier: 1,
-    description: "Perfect for solo travelers."
+    travelers: 1
   },
   {
-    type: "Family Plan",
-    multiplier: 1.3,
-    description: "Ideal for families."
-  },
-  {
-    type: "Peak Season Plan",
-    multiplier: 1.6,
-    description: "Travel during peak season."
-  },
-  {
-    type: "Standard",
-    description: "Hotel + Breakfast",
-    multiplier: 1
-  },
-  {
-    type: "Premium",
-    description: "Hotel + Breakfast + Tours",
-    multiplier: 1.5
+    type: "Family",
+    description: "Best for family trips",
+    multiplier: 0.9,
+    travelers: 4
   },
   {
     type: "Luxury",
-    description: "All Inclusive + VIP Services",
-    multiplier: 2
+    description: "Premium luxury experience",
+    multiplier: 1.5,
+    travelers: 2
   }
 ];

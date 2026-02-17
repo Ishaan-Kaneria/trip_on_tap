@@ -7,6 +7,7 @@
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header>
@@ -21,6 +22,11 @@
         <a href="destinations.html">Destinations</a>
         <a href="packages.html">Packages</a>
         <a href="contact.html">Contact</a>
+
+        <!-- ❤️ Wishlist -->
+        <a href="wishlist.html" class="wishlist-link">
+            ❤️ Wishlist <span id="wishlistCount">(0)</span>
+        </a>
     </nav>
 </header>
 
@@ -32,6 +38,13 @@
             <a href="destinations.html" class="btn">Explore Destinations</a>
         </div>
     </section>
+    <section class="content">
+  <h2>Popular Tours</h2>
+
+  <div class="card-grid" id="homeTourContainer">
+    <!-- JS injects tours here -->
+  </div>
+</section>
 </main>
 
 <footer>

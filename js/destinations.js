@@ -13,6 +13,14 @@ export function loadDestinations() {
 
   function renderTours(list) {
 
+    if (list.length === 0) {
+      container.innerHTML = `
+        <p style="color:#ffa500; font-size:18px;">
+          😈 No destinations found...
+        </p>`;
+      return;
+    }
+
     container.innerHTML = list.map(tour => `
       <div class="card">
         <img src="${tour.image}" alt="${tour.name}">
@@ -20,15 +28,12 @@ export function loadDestinations() {
         <p>${tour.description}</p>
         <p class="price">$${tour.price}</p>
 
-        <div class="card-actions">
-          <button class="btn explore-btn" data-id="${tour.id}">
-            Explore
-          </button>
-          <span class="heart ${wishlist.includes(tour.id) ? "active" : ""}" 
-                data-id="${tour.id}">
-            ❤️
-          </span>
-        </div>
+        <button class="btn explore-btn" data-id="${tour.id}">
+          Explore
+        </button>
+
+        <span class="heart ${wishlist.includes(tour.id) ? 'active' : ''}"
+              data-id="${tour.id}">❤️</span>
       </div>
     `).join("");
 
@@ -45,10 +50,10 @@ export function loadDestinations() {
       });
     });
 
-    // Wishlist (Event Delegation)
+    // ❤️ Wishlist (Event Delegation style)
     document.querySelectorAll(".heart").forEach(heart => {
       heart.addEventListener("click", () => {
-        const id = parseInt(heart.dataset.id);
+        const id = Number(heart.dataset.id);
 
         if (wishlist.includes(id)) {
           wishlist = wishlist.filter(t => t !== id);

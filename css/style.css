@@ -199,6 +199,35 @@ button:active,
     color: white;
 }
 
+.wishlist {
+  cursor: pointer;
+  font-size: 22px;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.wishlist.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.heart {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.heart.active {
+  color: red;
+}
+
+.remove-btn {
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
 /* ================= FOOTER ================= */
 
 footer
