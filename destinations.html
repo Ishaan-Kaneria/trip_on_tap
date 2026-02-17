@@ -7,57 +7,42 @@
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+    <header>
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="Logo">
+            <span class="site-title">Trip On Tap</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="destinations.html" class="active">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="contact.html">Contact</a>
+            <a href="wishlist.html">❤️ Wishlist <span id="wishlistCount"></span></a>
+        </nav>
+    </header>
 
-<header>
-    <div class="nav-logo">
-        <img src="images/logo.png" alt="Logo">
-        <span class="site-title">Trip On Tap</span>
-    </div>
+    <main class="content">
+        <h2 class="section-title" style="text-align:center; padding: 30px 0;">Popular Destinations</h2>
+        
+        <div class="controls" style="text-align:center; margin-bottom: 20px;">
+            <input type="text" id="searchInput" placeholder="Search destination...">
+            <select id="sortPrice">
+                <option value="">Sort by Price</option>
+                <option value="low">Low to High</option>
+                <option value="high">High to Low</option>
+            </select>
+        </div>
 
-    <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="destinations.html">Destinations</a>
-        <a href="packages.html">Packages</a>
-        <a href="contact.html">Contact</a>
+        <div class="card-grid" id="tourContainer">
+            </div>
+    </main>
 
-        <!-- ❤️ Wishlist -->
-        <a href="wishlist.html" class="wishlist-link">
-            ❤️ Wishlist <span id="wishlistCount">(0)</span>
-        </a>
-    </nav>
-</header>
+    <footer>
+        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
+    </footer>
 
-<main class="content">
-
-    <h2 class="section-title">Popular Destinations</h2>
-
-    <div class="controls">
-        <input type="text" id="searchInput" placeholder="Search destination...">
-        <select id="sortPrice">
-            <option value="">Sort by Price</option>
-            <option value="low">Low to High</option>
-        </select>
-    </div>
-
-    <div class="card-grid" id="tourContainer"></div>
-
-</main>
-
-<footer>
-    <p>© 2026 Trip On Tap</p>
-</footer>
-
-<!-- Halloween Overlay -->
-<div id="creepy-overlay"></div>
-
-<audio id="creepy-sound">
-    <source src="audio/button.mp3" type="audio/mpeg">
-</audio>
-
-<script type="module" src="js/main.js"></script>
-
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

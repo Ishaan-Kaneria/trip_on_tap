@@ -7,57 +7,40 @@
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+    <header>
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="Logo">
+            <span class="site-title">Trip On Tap</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="contact.html">Contact</a>
+            <a href="wishlist.html">❤️ Wishlist <span id="wishlistCount"></span></a>
+        </nav>
+    </header>
 
-<header>
-    <div class="nav-logo">
-        <img src="images/logo.png" alt="Logo">
-        <span class="site-title">Trip On Tap</span>
-    </div>
-
-    <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="destinations.html">Destinations</a>
-        <a href="packages.html">Packages</a>
-        <a href="contact.html">Contact</a>
-
-        <!-- ❤️ Wishlist -->
-        <a href="wishlist.html" class="wishlist-link">
-            ❤️ Wishlist <span id="wishlistCount">(0)</span>
-        </a>
-    </nav>
-</header>
-
-<main>
-    <section class="index_section">
-        <div>
+    <section class="hero">
+        <div class="hero-content">
             <h1>Your Journey Starts Here</h1>
             <p>Explore the world with comfort, confidence, and care.</p>
             <a href="destinations.html" class="btn">Explore Destinations</a>
         </div>
     </section>
-    <section class="content">
-  <h2>Popular Tours</h2>
 
-  <div class="card-grid" id="homeTourContainer">
-    <!-- JS injects tours here -->
-  </div>
-</section>
-</main>
+    <main class="content">
+        <h2 class="section-title" style="text-align:center; padding-top:40px;">Featured Tours</h2>
+        <div class="card-grid" id="homeTourContainer">
+            </div>
+    </main>
 
-<footer>
-    <p>© 2026 Trip On Tap. All Rights Reserved.</p>
-</footer>
+    <footer>
+        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
+    </footer>
 
-<div id="creepy-overlay"></div>
-
-<audio id="creepy-sound">
-    <source src="audio/button.mp3" type="audio/mpeg">
-</audio>
-
-<script type="module" src="js/main.js"></script>
-
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

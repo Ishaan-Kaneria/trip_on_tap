@@ -1,77 +1,14 @@
 export const tours = [
-  {
-    id: 1,
-    name: "Paris",
-    price: 1200,
-    image: "images/paris.jpg",
-    description: "City of love and lights.",
-    country: "France",
-    rating: 4.8
-  },
-  {
-    id: 2,
-    name: "Tokyo",
-    price: 1500,
-    image: "images/tokyo.jpg",
-    description: "Tradition meets technology.",
-    country: "Japan",
-    rating: 4.7
-  },
-  {
-    id: 3,
-    name: "Dubai",
-    price: 1800,
-    image: "images/dubai.jpg",
-    description: "Luxury in the desert.",
-    country: "UAE",
-    rating: 4.6
-  },
-  {
-    id: 4,
-    name: "New York",
-    price: 1400,
-    image: "images/newyork.jpg",
-    description: "The city that never sleeps.",
-    country: "USA",
-    rating: 4.5
-  },
-  {
-    id: 5,
-    name: "Bali Escape",
-    country: "Indonesia",
-    price: 800,
-    image: "images/bali.jpg",
-    description: "Experience tropical paradise with beaches and temples.",
-    rating: 4.7
-  },
-  {
-    id: 6,
-    name: "Swiss Alps Adventure",
-    country: "Switzerland",
-    price: 1500,
-    image: "images/swiss.jpg",
-    description: "Snow peaks, scenic trains, and mountain magic.",
-    rating: 4.9
-  },
+    { id: 1, name: "Paris", price: 1200, image: "images/paris.jpg", description: "City of lights and romance.", country: "France" },
+    { id: 2, name: "Tokyo", price: 1500, image: "images/tokyo.jpg", description: "A blend of old and new.", country: "Japan" },
+    { id: 3, name: "Dubai", price: 1800, image: "images/dubai.jpg", description: "Desert luxury at its best.", country: "UAE" },
+    { id: 4, name: "Bali", price: 800, image: "images/bali.jpg", description: "Tropical peace and beaches.", country: "Indonesia" },
+    { id: 5, name: "Swiss Alps", price: 2200, image: "images/alps.jpg", description: "Majestic snowy mountains.", country: "Switzerland" }
 ];
 
-export const plans = [
-  {
-    type: "Solo",
-    description: "Perfect for solo explorers",
-    multiplier: 1,
-    travelers: 1
-  },
-  {
-    type: "Family",
-    description: "Best for family trips",
-    multiplier: 0.9,
-    travelers: 4
-  },
-  {
-    type: "Luxury",
-    description: "Premium luxury experience",
-    multiplier: 1.5,
-    travelers: 2
-  }
+// Plan types with their respective price multipliers
+export const planTypes = [
+    { name: "Solo Explorer", multiplier: 1.0 },
+    { name: "Family Fun", multiplier: 2.5 },
+    { name: "Group Adventure", multiplier: 4.0 }
 ];

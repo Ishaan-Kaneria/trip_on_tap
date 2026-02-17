@@ -1,88 +1,56 @@
-import { tours } from "./data.js";
+import { tours } from './data.js';
 
 export function loadDestinations() {
+    const container = document.getElementById("tourContainer");
+    const searchInput = document.getElementById("searchInput");
+    const sortPrice = document.getElementById("sortPrice");
+    if (!container) return;
 
-  const container = document.getElementById("tourContainer");
-  const searchInput = document.getElementById("searchInput");
-  const sortPrice = document.getElementById("sortPrice");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-  if (!container) return;
+    function render(list) {
+        container.innerHTML = list.map(tour => `
+            <div class="card">
+                <span class="heart ${wishlist.includes(tour.id) ? 'active' : ''}" data-id="${tour.id}">❤️</span>
+                <img src="${tour.image}" alt="${tour.name}">
+                <div class="card-body">
+                    <h3>${tour.name}</h3>
+                    <p class="price">$${tour.price}</p>
+                    <button class="btn detail-btn" data-id="${tour.id}">Details</button>
+                </div>
+            </div>
+        `).join('');
 
-  let filteredTours = [...tours];
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        // Instant Update Hearts
+        document.querySelectorAll(".heart").forEach(h => {
+            h.onclick = () => {
+                const id = parseInt(h.dataset.id);
+                if (wishlist.includes(id)) wishlist = wishlist.filter(i => i !== id);
+                else wishlist.push(id);
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                h.classList.toggle('active');
+                window.updateWishlistCount(); // Simultaneous Update
+            };
+        });
 
-  function renderTours(list) {
-
-    if (list.length === 0) {
-      container.innerHTML = `
-        <p style="color:#ffa500; font-size:18px;">
-          😈 No destinations found...
-        </p>`;
-      return;
+        // Detail View
+        document.querySelectorAll(".detail-btn").forEach(b => {
+            b.onclick = () => {
+                localStorage.setItem("selectedTourId", b.dataset.id);
+                location.href = "tourDetails.html";
+            };
+        });
     }
 
-    container.innerHTML = list.map(tour => `
-      <div class="card">
-        <img src="${tour.image}" alt="${tour.name}">
-        <h3>${tour.name}</h3>
-        <p>${tour.description}</p>
-        <p class="price">$${tour.price}</p>
+    searchInput.oninput = () => {
+        const filtered = tours.filter(t => t.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+        render(filtered);
+    };
 
-        <button class="btn explore-btn" data-id="${tour.id}">
-          Explore
-        </button>
+    sortPrice.onchange = () => {
+        const sorted = [...tours].sort((a,b) => sortPrice.value === 'low' ? a.price - b.price : b.price - a.price);
+        render(sorted);
+    };
 
-        <span class="heart ${wishlist.includes(tour.id) ? 'active' : ''}"
-              data-id="${tour.id}">❤️</span>
-      </div>
-    `).join("");
-
-    attachEvents();
-  }
-
-  function attachEvents() {
-
-    // Explore
-    document.querySelectorAll(".explore-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        localStorage.setItem("selectedTourId", btn.dataset.id);
-        window.location.href = "./tourDetails.html";
-      });
-    });
-
-    // ❤️ Wishlist (Event Delegation style)
-    document.querySelectorAll(".heart").forEach(heart => {
-      heart.addEventListener("click", () => {
-        const id = Number(heart.dataset.id);
-
-        if (wishlist.includes(id)) {
-          wishlist = wishlist.filter(t => t !== id);
-        } else {
-          wishlist.push(id);
-        }
-
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        renderTours(filteredTours);
-      });
-    });
-  }
-
-  renderTours(filteredTours);
-
-  // Search
-  searchInput?.addEventListener("input", () => {
-    const value = searchInput.value.toLowerCase();
-    filteredTours = tours.filter(t =>
-      t.name.toLowerCase().includes(value)
-    );
-    renderTours(filteredTours);
-  });
-
-  // Sort
-  sortPrice?.addEventListener("change", () => {
-    if (sortPrice.value === "low") {
-      filteredTours.sort((a, b) => a.price - b.price);
-    }
-    renderTours(filteredTours);
-  });
+    render(tours);
 }

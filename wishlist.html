@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wishlist</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Trip On Tap | Wishlist</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="Logo">
+            <span class="site-title">Trip On Tap</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="contact.html">Contact</a>
+            <a href="wishlist.html" class="active">❤️ Wishlist <span id="wishlistCount"></span></a>
+        </nav>
+    </header>
 
-  <h1>❤️ My Wishlist</h1>
+    <main class="content">
+        <h2 class="section-title" style="text-align:center; padding: 40px 0;">Your Saved Adventures</h2>
+        <div class="card-grid" id="wishlistContainer">
+            </div>
+    </main>
 
-  <div id="wishlistContainer"></div>
+    <footer>
+        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
+    </footer>
 
-  <script type="module" src="./wishlist.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

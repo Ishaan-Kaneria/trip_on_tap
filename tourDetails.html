@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tour Details</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Trip On Tap | Details</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+    <header>
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="Logo">
+            <span class="site-title">Trip On Tap</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="contact.html">Contact</a>
+            <a href="wishlist.html">❤️ Wishlist <span id="wishlistCount"></span></a>
+        </nav>
+    </header>
 
-<header>
-    <div class="nav-logo">
-        <img src="images/logo.png" alt="Logo">
-        <span class="site-title">Trip On Tap</span>
-    </div>
+    <main class="content">
+        <div id="tourDetails">
+            </div>
+    </main>
 
-    <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="destinations.html">Destinations</a>
-        <a href="packages.html">Packages</a>
-        <a href="contact.html">Contact</a>
+    <footer>
+        <p>© 2026 Trip On Tap. All Rights Reserved.</p>
+    </footer>
 
-        <!-- ❤️ Wishlist -->
-        <a href="wishlist.html" class="wishlist-link">
-            ❤️ Wishlist <span id="wishlistCount">(0)</span>
-        </a>
-    </nav>
-</header>
-
-<section class="content">
-  <div id="tourDetails"></div>
-</section>
-
-<footer>
-    <p>© 2026 Trip On Tap</p>
-</footer>
-
-<script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
